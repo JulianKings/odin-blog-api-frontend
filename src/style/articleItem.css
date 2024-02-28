@@ -1,0 +1,44 @@
+.articleItem {
+    background-color: white;
+    padding: 0.4rem;
+    border-radius: 0.5rem;    
+    box-shadow: 0 0 0.6rem rgb(0, 0, 0, 0.15);
+}
+
+.articleItem .articleImage img {
+    width: 100%;
+    height: 10rem;
+    border-radius: 0.35rem;
+    object-fit: cover;
+}
+
+.articleItem .articleContent {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.articleContent .articleInformation {
+    font-size: 0.85rem;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.articleInformation .articleCategory {
+    font-weight: bold;
+}
+
+.articleContent .articleTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.articleContent .articleDescription {
+    font-size: 0.8rem;
+    color: #747474;
+}
+
+.articleInformation .articleTime {
+    color: #336199;
+}

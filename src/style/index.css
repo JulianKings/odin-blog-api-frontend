@@ -1,0 +1,270 @@
+.mainArticle {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 45ch 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mainArticle .mainArticleImage img {
+    width: 100%;
+    border-radius: 5rem;
+    border-bottom-left-radius: 0;
+}
+
+.mainArticle .mainArticleContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    align-items: flex-start;
+    max-width: 40ch;
+}
+
+.mainArticleContent .mainArticleTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.mainArticleContent .mainArticleDescription {
+    color: #747474;
+}
+
+.mainArticleContent .mainArticleButton button {
+    background-color: #336199;
+    color: white;
+    border: 0;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    padding: 0.6rem 2.8rem;
+    box-shadow: 0 0.25rem 0 #27374D;
+    transition: all 0.2s ease-in;
+}
+
+.mainArticleContent .mainArticleButton button:hover {
+    background-color: #27374D;
+    box-shadow: 0 0.25rem 0 #0d1725;
+}
+
+.latestArticles {
+    margin-top: 2.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.latestArticles .latestArticlesTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.latestArticles .latestArticlesHolder {
+    flex: 1;
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27ch, 25%));
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.featuredArticle {
+    background-color: white;
+    padding: 0.4rem;
+    border-radius: 0.5rem;    
+    box-shadow: 0 0 0.2rem rgb(0, 0, 0, 0.15);
+    display: grid;
+    grid-template-columns: 1fr 40ch;
+    max-width: 78ch;
+    align-self: center;
+    margin-top: 2rem;
+}
+
+.featuredArticle .featuredArticleImage img {
+    width: 38ch;
+    height: 16rem;
+    border-radius: 0.35rem;
+    object-fit: cover;
+}
+
+.featuredArticle .featuredArticleContent {
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    max-width: 35ch;
+}
+
+.featuredArticleContent .featuredArticleInformation {
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.featuredArticleContent .featuredArticleTitle {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.featuredArticleContent .featuredArticleDescription {
+    font-size: 0.9rem;
+    color: #747474;
+}
+
+.featuredArticleContent .featuredArticleButton button {
+    background-color: #336199;
+    color: white;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    box-shadow: 0 0.25rem 0 #27374D;
+    transition: all 0.2s ease-in;
+}
+
+.featuredArticleContent .featuredArticleButton button:hover {
+    background-color: #27374D;
+    box-shadow: 0 0.25rem 0 #0d1725;
+}
+
+.popularArticles {
+    margin-top: 2.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popularArticles .popularArticlesTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.popularArticlesContainer
+{
+    background-color: white;
+    padding: 0.6rem;
+    border-radius: 0.5rem;    
+    box-shadow: 0 0 0.4rem rgb(0, 0, 0, 0.1);
+    max-width: 82ch;
+    align-self: center;
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: 41ch 41ch;
+}
+
+.mainPopularArticle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    max-width: 38ch;
+}
+
+.mainPopularArticle .mainPopularArticleImage img {
+    width: 95%;
+    height: 14rem;
+    border-radius: 0.35rem;
+    object-fit: cover;
+}
+
+.mainPopularArticle .mainPopularArticleContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.mainPopularArticle .mainPopularArticleInformation {
+    font-size: 0.9rem;
+    display: flex;
+    gap: 1.4rem;
+    padding-bottom: 1.2rem;
+}
+
+.mainPopularArticleInformation .mainPopularArticleCategory {
+    font-weight: bold;
+}
+
+.mainPopularArticleInformation .mainPopularArticleTime {
+    color: #336199;
+
+}
+
+.mainPopularArticleContent .mainPopularArticleTitle {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.mainPopularArticleContent .mainPopularArticleDescription {
+    font-size: 0.9rem;
+    color: #747474;
+}
+
+.popularArticlesContainer .popularArticlesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.newsLetter {
+    margin-top: 2rem;
+    max-width: 80ch;
+    color: white;
+    background-color: #0b51a7;
+    flex: 1;
+    align-self: stretch;
+    padding: 1.6rem 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr 30ch;
+    gap: 0.8rem;
+}
+
+.newsLetter .newsLetterContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.newsLetterContent .newsLetterTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.newsLetterContent .newsLetterDescription {
+    font-size: 0.8rem;
+}
+
+.newsLetter .newsLetterInput {
+    align-self: center;
+    justify-self: flex-end;
+    padding-right: 2rem;
+    position: relative;
+}
+
+.newsLetter .newsLetterInput input {
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.4rem;
+    border: 1px solid #336199;
+    width: 22ch;
+    padding-right: 12ch;
+}
+
+.newsLetter .newsLetterInput input:focus {
+    border: 1px solid #0d1725;
+    outline: none;
+}
+
+.newsLetter .newsLetterInput button {
+    position: absolute;
+    right: 2.11rem;
+    top: 0.1rem;
+    background-color: #011e42;
+    border-radius: 0.4rem;
+    border: 0;
+    padding: 0.35rem 0.6rem;
+    transition: all 0.3s ease-in;
+    color: white;
+}
+
+.newsLetter .newsLetterInput button:hover {
+    background-color: #000e24;
+}

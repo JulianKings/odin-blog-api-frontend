@@ -1,0 +1,37 @@
+.popularArticleItem {
+    display: grid;
+    grid-template-columns: 14ch 1fr;
+}
+
+.popularArticleItem .popularArticleImage img {
+    width: 12ch;
+    height: 5rem;
+    border-radius: 0.25rem;
+    object-fit: cover;
+}
+
+.popularArticleItem .popularArticleContent {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.popularArticleContent .popularArticleInformation {
+    font-size: 0.85rem;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.popularArticleInformation .popularArticleCategory {
+    font-weight: bold;
+}
+
+.popularArticleContent .popularArticleTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.popularArticleInformation .popularArticleTime {
+    color: #336199;
+}
