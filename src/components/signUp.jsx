@@ -2,9 +2,13 @@ import useMergedRef from '@react-hook/merged-ref';
 import useMultiRefs from '../scripts/helper/helper';
 import '../style/signUp.css'
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp()
 {
+    // utils
+    const navigate = useNavigate();
+
     // general declaration
     const [inputs, addInput] = useMultiRefs();
 
@@ -160,8 +164,69 @@ function SignUp()
     // Handlers
     function handleSubmit(event)
     {
-        console.log('Sent!');
         event.preventDefault();
+        const user = {};
+        let errorNoticed = false;
+        const inputElements = inputs();
+
+        inputElements.forEach((input) => {
+            if(input.classList.contains('error'))
+            {
+                errorNoticed = true;
+            } else {
+                user[input.id] = input.value;
+            }
+        });
+
+        if(!errorNoticed)
+        {
+            // ask the backEnd
+            fetch("http://localhost:3000/sign-up", { 
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                mode: "cors",
+                dataType: 'json',
+                body: JSON.stringify(user),
+            })
+            .then((response) => {
+            if (response.status >= 400) {
+                throw new Error("server error");
+            }
+            return response.json();
+            })
+            .then((response) => {
+                if(response.responseStatus)
+                {
+                    if(response.responseStatus === 'validSignup')
+                    {
+                        navigate('/login');
+                    } else {
+                        console.log(response.errors);
+                        response.errors.forEach((error) => {
+                            const result = inputElements.find((input) => {
+                                if(input.id === error.path)
+                                {
+                                    return input;
+                                }
+                            })
+
+                            if(result)
+                            {                    
+                                if(result.classList.contains("valid"))
+                                {
+                                    result.classList.remove("valid");
+                                }       
+                                result.classList.add("error");
+                                result.parentElement.nextElementSibling.textContent = error.msg;
+                            }
+                        });
+                    }
+                }            
+            })
+            .catch((error) => {
+                throw new Error(error);
+            });
+        }
     }
 
     function onFastInputChange(inputEvent, input, prevSibling)
