@@ -2,9 +2,46 @@ import '../style/index.css'
 import newspaperImage from '../assets/newspaper.webp'
 import LatestArticleItem from './items/latestArticleItem';
 import PopularArticleItem from './items/popularArticleItem';
+import { useEffect, useState } from 'react';
 
 function Index()
 {
+    const [articleList, setArticleList] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/article/all", {                
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: "cors",
+            dataType: 'json',
+         })
+        .then((response) => {
+          if (response.status >= 400) {
+            throw new Error("server error");
+          }
+          return response.json();
+        })
+        .then((response) => {
+            if(response && response.responseStatus === 'validRequest')
+            {
+                setArticleList(response.articles);
+            }
+        })
+        .catch((error) => {
+            throw new Error(error);
+        })
+    }, []);
+
+    let latestArticleList = (<div className='loadingPrompt'>Loading Articles...</div>);
+
+    if(articleList && articleList.length > 0)
+    {
+        latestArticleList = articleList.map((art) => <LatestArticleItem key={art._id} article={art}></LatestArticleItem>)
+    } else if(articleList) {
+        latestArticleList = (<div className='loadingPrompt'>No articles available.</div>);
+    }
+
     return <>
         <section className='mainArticle'>
             <div className='mainArticleContent'>
@@ -21,12 +58,7 @@ function Index()
         <section className='latestArticles'>
             <div className='latestArticlesTitle'>Latest articles</div>
             <div className='latestArticlesHolder'>
-                <LatestArticleItem></LatestArticleItem>
-                <LatestArticleItem></LatestArticleItem>
-                <LatestArticleItem></LatestArticleItem>
-                <LatestArticleItem></LatestArticleItem>
-                <LatestArticleItem></LatestArticleItem>
-                <LatestArticleItem></LatestArticleItem>
+                {latestArticleList}
             </div>
         </section>
         <section className='featuredArticle'>

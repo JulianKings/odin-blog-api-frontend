@@ -42,6 +42,11 @@ function MainContent() {
                 if(response.status === 401)
                 {
                     // Awaiting for login or token expired
+
+                    if(localStorage.getItem('sso_token'))
+                    {
+                        localStorage.removeItem('sso_token');
+                    }
                     // cleanup user if it exists
                     if(userObject)
                     {
