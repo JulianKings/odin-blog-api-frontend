@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import useMergedRef from '@react-hook/merged-ref';
 import useMultiRefs from '../scripts/helper/helper';
 import '../style/signUp.css'
@@ -27,6 +28,11 @@ function SignUp()
     const multiPasswordRef = useMergedRef(passwordInput, addInput);
 
     useEffect(() => {
+        if(localStorage.getItem('sso_token'))
+        {
+            navigate('/');
+        }
+        
         const inputElements = inputs();
         inputElements.forEach((input) => {
             // register all Handlers
@@ -279,12 +285,12 @@ function SignUp()
 
     function isValidName(name)
     {
-        return true;
+        return (name);
     }
 
     function isValidMail(mail)
     {
-        return true;
+        return (mail);
     }
 
     function onInputChange(inputEvent, input, prevSibling)
@@ -342,7 +348,7 @@ function SignUp()
                 }
             } else if(input.id === "email")
             {
-                let validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                let validRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
                 if(!isValidMail(inputValue)) {
                     input.classList.add("error");
                     prevSibling.textContent = "This email is already taken";

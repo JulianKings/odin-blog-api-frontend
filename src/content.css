@@ -60,6 +60,30 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
+}
+
+.navigationBar .navigationBarMenu {
+    position: absolute;
+    top: 3.4rem;
+    background-color: white;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 0.4rem rgb(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    transition: all 0.8s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+}
+
+.navigationBar .navigationBarMenu.selected {
+    max-height: 90vh;
+}
+
+.navigationBarMenu .navigationBarMenuContainer {
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
 .navigationBar a {
