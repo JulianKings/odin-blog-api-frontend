@@ -1,0 +1,11 @@
+.article-content-holder {
+    width: 100%;
+    min-width: 45ch;
+    max-width: 80ch;
+}
+
+.article-content {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+}

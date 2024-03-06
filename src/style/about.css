@@ -1,0 +1,24 @@
+.login-content-holder {
+    width: 100%;
+    min-width: 45ch;
+    max-width: 80ch;
+}
+
+.about-content {
+    margin-top: 2.5rem;
+    background-color: white;
+    border-radius: 0.5rem;    
+    box-shadow: 0 0 0.4rem rgb(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 80ch;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+.about-title {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+

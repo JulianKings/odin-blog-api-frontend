@@ -5,6 +5,8 @@ import Index from "./components";
 import SignUp from "./components/signUp";
 import Login from "./components/login";
 import Logout from "./components/logout";
+import About from "./components/about";
+import Articles from "./components/articles";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -28,6 +30,14 @@ const Router = () => {
                   {
                     path: "logout",
                     element: <Logout />
+                  },
+                  {
+                    path: "about",
+                    element: <About />
+                  },
+                  {
+                    path: "articles",
+                    element: <Articles />
                   }
               ],
           }

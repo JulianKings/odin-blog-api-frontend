@@ -1,6 +1,6 @@
 import '../style/index.css'
 import newspaperImage from '../assets/newspaper.webp'
-import ArticleItem from './items/articleItem';
+import LatestArticleItem from './items/latestArticleItem';
 import PopularArticleItem from './items/popularArticleItem';
 
 function Index()
@@ -21,12 +21,12 @@ function Index()
         <section className='latestArticles'>
             <div className='latestArticlesTitle'>Latest articles</div>
             <div className='latestArticlesHolder'>
-                <ArticleItem></ArticleItem>
-                <ArticleItem></ArticleItem>
-                <ArticleItem></ArticleItem>
-                <ArticleItem></ArticleItem>
-                <ArticleItem></ArticleItem>
-                <ArticleItem></ArticleItem>
+                <LatestArticleItem></LatestArticleItem>
+                <LatestArticleItem></LatestArticleItem>
+                <LatestArticleItem></LatestArticleItem>
+                <LatestArticleItem></LatestArticleItem>
+                <LatestArticleItem></LatestArticleItem>
+                <LatestArticleItem></LatestArticleItem>
             </div>
         </section>
         <section className='featuredArticle'>
