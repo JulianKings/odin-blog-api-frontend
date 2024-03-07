@@ -28,6 +28,16 @@ body {
     background-color: #fbfdfc;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #336199;
+}
+
+
 #root {
     overflow: auto;
     height: 100%;
@@ -84,15 +94,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-}
-
-.navigationBar a {
-    text-decoration: none;
-    color: black;
-}
-
-.navigationBar a:hover {
-    color: #336199;
 }
 
 .navigationBar .navigationStarted {

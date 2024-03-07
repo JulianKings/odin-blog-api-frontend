@@ -204,6 +204,10 @@
     gap: 0.8rem;
 }
 
+.popularArticlesList .loadingArticlesPrompt {
+    align-self: center;    
+}
+
 .newsLetter {
     margin-top: 2rem;
     max-width: 80ch;
@@ -256,7 +260,7 @@
 .newsLetter .newsLetterInput button {
     position: absolute;
     right: 2.11rem;
-    top: 0.1rem;
+    top: 0.11rem;
     background-color: #011e42;
     border-radius: 0.4rem;
     border: 0;

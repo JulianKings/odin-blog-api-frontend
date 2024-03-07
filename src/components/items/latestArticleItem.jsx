@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../../style/latestArticleItem.css';
 import PropTypes from 'prop-types';
 
@@ -13,6 +14,7 @@ function LatestArticleItem({article})
     }
 
     let imageUrl = (article.imageUrl === '' ? './src/assets/newspaper.webp' : article.imageUrl);
+    let articleUrl = 'article/' + article._id;
 
     return <>
         <div className='latestArticleItem'>
@@ -24,7 +26,7 @@ function LatestArticleItem({article})
                     <div className='latestArticleCategory'>{article.category.name}</div>
                     <div className='latestArticleTime'>{minuteRead} min read</div>
                 </div>
-                <div className='latestArticleTitle'>{article.title}</div>
+                <div className='latestArticleTitle'><Link to={articleUrl}>{article.title}</Link></div>
                 <div className='latestArticleDescription'>{article.description}</div>
             </div>
         </div>

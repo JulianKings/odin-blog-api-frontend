@@ -1,15 +1,18 @@
 import '../style/index.css'
 import newspaperImage from '../assets/newspaper.webp'
 import LatestArticleItem from './items/latestArticleItem';
-import PopularArticleItem from './items/popularArticleItem';
 import { useEffect, useState } from 'react';
+import PopularArticles from './popularArticles';
+import { Link } from 'react-router-dom';
 
 function Index()
 {
     const [articleList, setArticleList] = useState(null);
+    const [featuredArticle, setFeaturedArticle] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3000/article/all", {                
+        // Get latest articles
+        fetch("http://localhost:3000/article", {                
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -31,6 +34,30 @@ function Index()
         .catch((error) => {
             throw new Error(error);
         })
+
+        // Get featured article
+        fetch("http://localhost:3000/settings", {                
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: "cors",
+            dataType: 'json',
+         })
+        .then((response) => {
+          if (response.status >= 400) {
+            throw new Error("server error");
+          }
+          return response.json();
+        })
+        .then((response) => {
+            if(response && response.responseStatus === 'validRequest')
+            {
+                setFeaturedArticle(response.settings.featured_article);
+            }
+        })
+        .catch((error) => {
+            throw new Error(error);
+        })
     }, []);
 
     let latestArticleList = (<div className='loadingPrompt'>Loading Articles...</div>);
@@ -42,13 +69,34 @@ function Index()
         latestArticleList = (<div className='loadingPrompt'>No articles available.</div>);
     }
 
+    let featuredArticleImage = newspaperImage;
+    let featuredArticleMinuteRead = 'Unknown';
+    let featuredArticleLink = '/';
+
+    if(featuredArticle)
+    {
+        let wordArray = featuredArticle.message.split(' ');
+        // Average 238 words per minute per reading speed statistic
+        featuredArticleMinuteRead = Math.floor(wordArray.length / 238);
+
+        if(featuredArticleMinuteRead === 0)
+        {
+            featuredArticleMinuteRead = 'less than 1';
+        }
+
+        featuredArticleImage = (featuredArticle.imageUrl === '' ? './src/assets/newspaper.webp' : featuredArticle.imageUrl);
+        featuredArticleLink = 'article/' + featuredArticle._id;
+    }
+
     return <>
         <section className='mainArticle'>
             <div className='mainArticleContent'>
                 <div className='mainArticleTitle'>Tech keeps evolving. Be up to date</div>
                 <div className='mainArticleDescription'>In this blog you can discover the latest news on everything that&apos;s happening in the tech industry, with just a few clicks</div>
                 <div className='mainArticleButton'>
-                    <button type='button'>Start Reading</button>
+                    <Link to='/articles'>
+                        <button type='button'>Start Reading</button>
+                    </Link>
                 </div>
             </div>
             <div className='mainArticleImage'>
@@ -63,45 +111,23 @@ function Index()
         </section>
         <section className='featuredArticle'>
             <div className='featuredArticleImage'>
-                <img src={newspaperImage} />
+                <img src={featuredArticleImage} />
             </div>
             <div className='featuredArticleContent'>
                 <div className='featuredArticleInformation'>
-                    <div className='featuredArticleCategory'>Category</div>
-                    <div className='featuredArticleTime'>4 min read</div>
+                    <div className='featuredArticleCategory'>{(featuredArticle) ? featuredArticle.category.name : 'Unknown category'}</div>
+                    <div className='featuredArticleTime'>{featuredArticleMinuteRead} min read</div>
                 </div>
-                <div className='featuredArticleTitle'>Is AI taking over your job soon?</div>
-                <div className='featuredArticleDescription'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</div>
+                <div className='featuredArticleTitle'>{(featuredArticle) ? featuredArticle.title : 'Unknown title'}</div>
+                <div className='featuredArticleDescription'>{(featuredArticle) ? featuredArticle.description : 'Unknown description'}</div>
                 <div className='featuredArticleButton'>
-                    <button type='button'>Read Article</button></div>
-            </div>
-        </section>
-        <section className='popularArticles'>
-            <div className='popularArticlesTitle'>
-                Most popular articles
-            </div>
-            <div className='popularArticlesContainer'>
-                <div className='mainPopularArticle'>
-                    <div className='mainPopularArticleImage'>
-                        <img src={newspaperImage} />
-                    </div>
-                    <div className='mainPopularArticleContent'>
-                        <div className='mainPopularArticleInformation'>
-                            <div className='mainPopularArticleCategory'>Category</div>
-                            <div className='mainPopularArticleTime'>4 min read</div>
-                        </div>
-                        <div className='mainPopularArticleTitle'>Is AI taking over your job soon?</div>
-                        <div className='mainPopularArticleDescription'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</div>
-                    </div>
-                </div>
-                <div className='popularArticlesList'>
-                    <PopularArticleItem />
-                    <PopularArticleItem />
-                    <PopularArticleItem />
-                    <PopularArticleItem />
+                    <Link to={featuredArticleLink}>
+                        <button type='button'>Read Article</button>
+                    </Link>
                 </div>
             </div>
         </section>
+        <PopularArticles></PopularArticles>
         <section className='newsLetter'>
             <div className='newsLetterContent'>
                 <div className='newsLetterTitle'>Subscribe to our newsletter</div>
