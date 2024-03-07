@@ -55,8 +55,8 @@ function PopularArticles()
             mainArticleMinuteRead = 'less than 1';
         }
 
-        mainArticleImage = (mainArticle.imageUrl === '' ? './src/assets/newspaper.webp' : mainArticle.imageUrl);
-        mainArticleLink = 'article/' + mainArticle._id;
+        mainArticleImage = (mainArticle.imageUrl === '' ? '/src/assets/newspaper.webp' : mainArticle.imageUrl);
+        mainArticleLink = '/article/' + mainArticle._id;
     }
 
     let popularListContent = (<div className='loadingArticlesPrompt'>Loading articles...</div>)

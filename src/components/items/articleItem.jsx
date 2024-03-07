@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../../style/articleItem.css';
 import PropTypes from 'prop-types';
 
@@ -12,7 +13,8 @@ function ArticleItem({article}) {
         minuteRead = 'less than 1';
     }
 
-    let imageUrl = (article.imageUrl === '' ? './src/assets/newspaper.webp' : article.imageUrl);
+    let imageUrl = (article.imageUrl === '' ? '/src/assets/newspaper.webp' : article.imageUrl);
+    let articleUrl = '/article/' + article._id;
 
     return <>
         <section className='articleItem'>
@@ -27,7 +29,10 @@ function ArticleItem({article}) {
                 <div className='articleItemTitle'>{article.title}</div>
                 <div className='articleItemDescription'>{article.description}</div>
                 <div className='articleItemButton'>
-                    <button type='button'>Read Article</button></div>
+                    <Link to={articleUrl}>
+                        <button type='button'>Read Article</button>
+                    </Link>
+                </div>
             </div>
         </section>
     </>

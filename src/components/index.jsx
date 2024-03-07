@@ -84,8 +84,8 @@ function Index()
             featuredArticleMinuteRead = 'less than 1';
         }
 
-        featuredArticleImage = (featuredArticle.imageUrl === '' ? './src/assets/newspaper.webp' : featuredArticle.imageUrl);
-        featuredArticleLink = 'article/' + featuredArticle._id;
+        featuredArticleImage = (featuredArticle.imageUrl === '' ? '/src/assets/newspaper.webp' : featuredArticle.imageUrl);
+        featuredArticleLink = '/article/' + featuredArticle._id;
     }
 
     return <>

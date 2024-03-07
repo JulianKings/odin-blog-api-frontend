@@ -1,0 +1,55 @@
+.article-content-holder {
+    width: 100%;
+    min-width: 45ch;
+    max-width: 80ch;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-back {
+    margin-top: 0.6rem;
+    font-weight: bold;
+}
+
+.article-category {
+    align-self: center;
+    margin: 0.2rem 0;
+    padding: 0.4rem 1.2rem;
+    background-color: rgb(187, 187, 187, 0.2);
+    border-radius: 1.2rem;
+}
+
+.article-title {
+    align-self: center;
+    font-weight: bold;
+    font-size: 2.4rem;
+    max-width: 30ch;
+    text-align: center;
+    margin: 0.4rem 0;
+}
+
+.article-timestamp {
+    align-self: center;
+    color: rgb(134, 134, 134);
+    display: flex;
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
+}
+
+.article-timestamp .dot {
+    height: 6px;
+    width: 6px;
+    background-color: rgb(134, 134, 134, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 0.4rem;
+    margin-top: 0.2rem;
+  }
+
+.article-image img {
+    width: 100%;
+    border-radius: 0.8rem;
+    object-fit: cover;
+    height: 22rem;
+    margin: 1.6rem 0;
+}

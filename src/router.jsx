@@ -7,6 +7,7 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import About from "./components/about";
 import Articles from "./components/articles";
+import Article from "./components/article";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const Router = () => {
                   {
                     path: "articles",
                     element: <Articles />
+                  }, 
+                  {
+                    path: "article/:id",
+                    element: <Article />
                   }
               ],
           }

@@ -13,8 +13,8 @@ function LatestArticleItem({article})
         minuteRead = 'less than 1';
     }
 
-    let imageUrl = (article.imageUrl === '' ? './src/assets/newspaper.webp' : article.imageUrl);
-    let articleUrl = 'article/' + article._id;
+    let imageUrl = (article.imageUrl === '' ? '/src/assets/newspaper.webp' : article.imageUrl);
+    let articleUrl = '/article/' + article._id;
 
     return <>
         <div className='latestArticleItem'>
