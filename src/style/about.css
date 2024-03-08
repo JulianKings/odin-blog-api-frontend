@@ -1,4 +1,5 @@
 .about-content-holder {
+    align-self: center;
     width: 100%;
     min-width: 45ch;
     max-width: 80ch;

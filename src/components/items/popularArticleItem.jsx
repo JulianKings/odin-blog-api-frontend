@@ -16,16 +16,16 @@ function PopularArticleItem({article}) {
     let articleUrl = '/article/' + article._id;
 
     return <>
-        <div className="popularArticleItem">
-            <div className='popularArticleImage'>
+        <div className="popular-article-item">
+            <div className='popular-article-image'>
                 <img src={imageUrl} />
             </div>
-            <div className='popularArticleContent'>
-                <div className='popularArticleInformation'>
-                    <div className='popularArticleCategory'>{article.category.name}</div>
-                    <div className='popularArticleTime'>{minuteRead} min read</div>
+            <div className='popular-article-content'>
+                <div className='popular-article-information'>
+                    <div className='popular-article-category'>{article.category.name}</div>
+                    <div className='popular-article-time'>{minuteRead} min read</div>
                 </div>
-                <div className='popularArticleTitle'><Link to={articleUrl}>{article.title}</Link></div>
+                <div className='popular-article-title'><Link to={articleUrl}>{article.title}</Link></div>
             </div>
 
         </div>

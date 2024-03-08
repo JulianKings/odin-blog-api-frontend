@@ -1,37 +1,37 @@
-.popularArticleItem {
+.popular-article-item {
     display: grid;
     grid-template-columns: 14ch 1fr;
 }
 
-.popularArticleItem .popularArticleImage img {
+.popular-article-item .popular-article-image img {
     width: 12ch;
     height: 5rem;
     border-radius: 0.25rem;
     object-fit: cover;
 }
 
-.popularArticleItem .popularArticleContent {
+.popular-article-item .popular-article-content {
     margin-top: 0.4rem;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
 }
 
-.popularArticleContent .popularArticleInformation {
+.popular-article-content .popular-article-information {
     font-size: 0.85rem;
     display: flex;
     gap: 0.8rem;
 }
 
-.popularArticleInformation .popularArticleCategory {
+.popular-article-information .popular-article-category {
     font-weight: bold;
 }
 
-.popularArticleContent .popularArticleTitle {
+.popular-article-content .popular-article-title {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.popularArticleInformation .popularArticleTime {
+.popular-article-information .popular-article-time {
     color: #336199;
 }

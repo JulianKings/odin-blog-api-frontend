@@ -59,36 +59,36 @@ function PopularArticles()
         mainArticleLink = '/article/' + mainArticle._id;
     }
 
-    let popularListContent = (<div className='loadingArticlesPrompt'>Loading articles...</div>)
+    let popularListContent = (<div className='loading-articles-prompt'>Loading articles...</div>)
 
     if(popularArticleList && popularArticleList.length > 1)
     {
         let slicedArticleList = popularArticleList.slice(1);
         popularListContent = slicedArticleList.map((art) => <PopularArticleItem key={art._id} article={art}></PopularArticleItem>)
     } else {
-        popularListContent = (<div className='loadingArticlesPrompt'>No articles found</div>)
+        popularListContent = (<div className='loading-articles-prompt'>No articles found</div>)
     }
 
     return (<>
-        <section className='popularArticles'>
-            <div className='popularArticlesTitle'>
+        <section className='popular-articles'>
+            <div className='popular-articles-title'>
                 Most popular articles
             </div>
-            <div className='popularArticlesContainer'>
-                <div className='mainPopularArticle'>
-                    <div className='mainPopularArticleImage'>
+            <div className='popular-articles-container'>
+                <div className='main-popular-article'>
+                    <div className='main-popular-article-image'>
                         <img src={mainArticleImage} />
                     </div>
-                    <div className='mainPopularArticleContent'>
-                        <div className='mainPopularArticleInformation'>
-                            <div className='mainPopularArticleCategory'>{(mainArticle) ? mainArticle.category.name : 'Unknown category'}</div>
-                            <div className='mainPopularArticleTime'>{mainArticleMinuteRead} min read</div>
+                    <div className='main-popular-article-content'>
+                        <div className='main-popular-article-information'>
+                            <div className='main-popular-article-category'>{(mainArticle) ? mainArticle.category.name : 'Unknown category'}</div>
+                            <div className='main-popular-article-time'>{mainArticleMinuteRead} min read</div>
                         </div>
-                        <div className='mainPopularArticleTitle'><Link to={mainArticleLink}>{(mainArticle) ? mainArticle.title : 'Unknown title'}</Link></div>
-                        <div className='mainPopularArticleDescription'>{(mainArticle) ? mainArticle.description : 'Unknown description'}</div>
+                        <div className='main-popular-article-title'><Link to={mainArticleLink}>{(mainArticle) ? mainArticle.title : 'Unknown title'}</Link></div>
+                        <div className='main-popular-article-description'>{(mainArticle) ? mainArticle.description : 'Unknown description'}</div>
                     </div>
                 </div>
-                <div className='popularArticlesList'>
+                <div className='popular-articles-list'>
                     {popularListContent}
                 </div>
             </div>

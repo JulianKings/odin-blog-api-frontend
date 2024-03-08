@@ -1,4 +1,4 @@
-.mainArticle {
+.main-article {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 45ch 1fr;
@@ -6,13 +6,13 @@
     gap: 1rem;
 }
 
-.mainArticle .mainArticleImage img {
+.main-article .main-article-image img {
     width: 100%;
     border-radius: 5rem;
     border-bottom-left-radius: 0;
 }
 
-.mainArticle .mainArticleContent {
+.main-article .main-article-content {
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
@@ -20,16 +20,16 @@
     max-width: 40ch;
 }
 
-.mainArticleContent .mainArticleTitle {
+.main-article-content .main-article-title {
     font-size: 2.5rem;
     font-weight: bold;
 }
 
-.mainArticleContent .mainArticleDescription {
+.main-article-content .main-article-description {
     color: #747474;
 }
 
-.mainArticleContent .mainArticleButton button {
+.main-article-content .main-article-button button {
     background-color: #336199;
     color: white;
     border: 0;
@@ -40,25 +40,25 @@
     transition: all 0.2s ease-in;
 }
 
-.mainArticleContent .mainArticleButton button:hover {
+.main-article-content .main-article-button button:hover {
     background-color: #27374D;
     box-shadow: 0 0.25rem 0 #0d1725;
 }
 
-.latestArticles {
+.latest-articles {
     margin-top: 2.6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.latestArticles .latestArticlesTitle {
+.latest-articles .latest-articles-title {
     font-size: 1.2rem;
     font-weight: bold;
     align-self: flex-start;
 }
 
-.latestArticles .latestArticlesHolder {
+.latest-articles .latest-articles-holder {
     flex: 1;
     margin-top: 1.5rem;
     display: grid;
@@ -67,7 +67,7 @@
     justify-content: flex-start;
 }
 
-.featuredArticle {
+.featured-article {
     background-color: white;
     padding: 0.4rem;
     border-radius: 0.5rem;    
@@ -79,14 +79,14 @@
     margin-top: 2rem;
 }
 
-.featuredArticle .featuredArticleImage img {
+.featured-article .featured-article-image img {
     width: 38ch;
     height: 16rem;
     border-radius: 0.35rem;
     object-fit: cover;
 }
 
-.featuredArticle .featuredArticleContent {
+.featured-article .featured-article-content {
     justify-self: flex-end;
     display: flex;
     flex-direction: column;
@@ -94,24 +94,24 @@
     max-width: 35ch;
 }
 
-.featuredArticleContent .featuredArticleInformation {
+.featured-article-content .featured-article-information {
     font-size: 0.9rem;
     font-weight: bold;
     display: flex;
     justify-content: space-evenly;
 }
 
-.featuredArticleContent .featuredArticleTitle {
+.featured-article-content .featured-article-title {
     font-size: 1.6rem;
     font-weight: bold;
 }
 
-.featuredArticleContent .featuredArticleDescription {
+.featured-article-content .featured-article-description {
     font-size: 0.9rem;
     color: #747474;
 }
 
-.featuredArticleContent .featuredArticleButton button {
+.featured-article-content .featured-article-button button {
     background-color: #336199;
     color: white;
     border: 0;
@@ -121,25 +121,26 @@
     transition: all 0.2s ease-in;
 }
 
-.featuredArticleContent .featuredArticleButton button:hover {
+.featured-article-content .featured-article-button button:hover {
     background-color: #27374D;
     box-shadow: 0 0.25rem 0 #0d1725;
 }
 
-.popularArticles {
+.popular-articles {
+    align-self: stretch;
     margin-top: 2.6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.popularArticles .popularArticlesTitle {
+.popular-articles .popular-articles-title {
     font-size: 1.2rem;
     font-weight: bold;
     align-self: flex-start;
 }
 
-.popularArticlesContainer
+.popular-articles-container
 {
     background-color: white;
     padding: 0.6rem;
@@ -152,65 +153,65 @@
     grid-template-columns: 41ch 41ch;
 }
 
-.mainPopularArticle {
+.main-popular-article {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     max-width: 38ch;
 }
 
-.mainPopularArticle .mainPopularArticleImage img {
+.main-popular-article .main-popular-article-image img {
     width: 95%;
     height: 14rem;
     border-radius: 0.35rem;
     object-fit: cover;
 }
 
-.mainPopularArticle .mainPopularArticleContent {
+.main-popular-article .main-popular-article-content {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
 
-.mainPopularArticle .mainPopularArticleInformation {
+.main-popular-article .main-popular-article-information {
     font-size: 0.9rem;
     display: flex;
     gap: 1.4rem;
     padding-bottom: 1.2rem;
 }
 
-.mainPopularArticleInformation .mainPopularArticleCategory {
+.main-popular-article-information .main-popular-article-category {
     font-weight: bold;
 }
 
-.mainPopularArticleInformation .mainPopularArticleTime {
+.main-popular-article-information .main-popular-article-time {
     color: #336199;
 
 }
 
-.mainPopularArticleContent .mainPopularArticleTitle {
+.main-popular-article-content .main-popular-article-title {
     font-size: 1.6rem;
     font-weight: bold;
 }
 
-.mainPopularArticleContent .mainPopularArticleDescription {
+.main-popular-article-content .main-popular-article-description {
     font-size: 0.9rem;
     color: #747474;
 }
 
-.popularArticlesContainer .popularArticlesList {
+.popular-articles-container .popular-articles-list {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
 }
 
-.popularArticlesList .loadingArticlesPrompt {
+.popular-articles-list .loading-articles-prompt {
     align-self: center;    
 }
 
-.newsLetter {
+.newsletter {
     margin-top: 2rem;
-    max-width: 80ch;
+    max-width: 100ch;
     color: white;
     background-color: #0b51a7;
     flex: 1;
@@ -222,29 +223,29 @@
     gap: 0.8rem;
 }
 
-.newsLetter .newsLetterContent {
+.newsletter .newsletter-content {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
 }
 
-.newsLetterContent .newsLetterTitle {
+.newsletter-content .newsletter-title {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.newsLetterContent .newsLetterDescription {
+.newsletter-content .newsletter-description {
     font-size: 0.8rem;
 }
 
-.newsLetter .newsLetterInput {
+.newsletter .newsletter-input {
     align-self: center;
     justify-self: flex-end;
     padding-right: 2rem;
     position: relative;
 }
 
-.newsLetter .newsLetterInput input {
+.newsletter .newsletter-input input {
     padding: 0.4rem 0.6rem;
     border-radius: 0.4rem;
     border: 1px solid #336199;
@@ -252,23 +253,23 @@
     padding-right: 12ch;
 }
 
-.newsLetter .newsLetterInput input:focus {
+.newsletter .newsletter-input input:focus {
     border: 1px solid #0d1725;
     outline: none;
 }
 
-.newsLetter .newsLetterInput button {
+.newsletter .newsletter-input button {
     position: absolute;
-    right: 2.11rem;
-    top: 0.11rem;
+    right: 2.15rem;
+    top: 0.12rem;
     background-color: #011e42;
     border-radius: 0.4rem;
     border: 0;
-    padding: 0.35rem 0.6rem;
+    padding: 0.34rem 0.6rem;
     transition: all 0.3s ease-in;
     color: white;
 }
 
-.newsLetter .newsLetterInput button:hover {
+.newsletter .newsletter-input button:hover {
     background-color: #000e24;
 }

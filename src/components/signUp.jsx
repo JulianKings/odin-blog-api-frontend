@@ -112,18 +112,6 @@ function SignUp()
                     <div className="form-title-holder">Sign up</div>
                     <div className="form-row">
                         <div className="form-input">
-                            <div className="form-input-label"><label htmlFor="userName">User Name</label></div>
-                            <div className="form-input-content"><input ref={addInput} type="text" id="userName" name="user_name" minLength="3" maxLength="12" required /><span></span></div>
-                            <div className="form-input-error"></div>
-                        </div>
-                        <div className="form-input">
-                            <div className="form-input-label"><label htmlFor="email">Email</label></div>
-                            <div className="form-input-content"><input ref={addInput} type="email" id="email" name="user_email" required /><span></span></div>
-                            <div className="form-input-error"></div>
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-input">
                             <div className="form-input-label"><label htmlFor="firstName">First Name</label></div>
                             <div className="form-input-content"><input ref={addInput} type="text" id="firstName" name="user_firstName" maxLength="16" required /><span></span></div>
                             <div className="form-input-error"></div>
@@ -131,6 +119,18 @@ function SignUp()
                         <div className="form-input">
                             <div className="form-input-label"><label htmlFor="lastName">Last Name</label></div>
                             <div className="form-input-content"><input ref={addInput} type="text" id="lastName" name="user_lastName" maxLength="16" required /><span></span></div>
+                            <div className="form-input-error"></div>
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-input">
+                            <div className="form-input-label"><label htmlFor="userName">User Name</label></div>
+                            <div className="form-input-content"><input ref={addInput} type="text" id="userName" name="user_name" minLength="3" maxLength="12" required /><span></span></div>
+                            <div className="form-input-error"></div>
+                        </div>
+                        <div className="form-input">
+                            <div className="form-input-label"><label htmlFor="email">Email</label></div>
+                            <div className="form-input-content"><input ref={addInput} type="email" id="email" name="user_email" required /><span></span></div>
                             <div className="form-input-error"></div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@ function SignUp()
                 {
                     if(response.responseStatus === 'validSignup')
                     {
-                        navigate('/login');
+                        navigate('/sign-in');
                     } else {
                         console.log(response.errors);
                         response.errors.forEach((error) => {

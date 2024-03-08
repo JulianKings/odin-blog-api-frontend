@@ -60,13 +60,13 @@ function Index()
         })
     }, []);
 
-    let latestArticleList = (<div className='loadingPrompt'>Loading Articles...</div>);
+    let latestArticleList = (<div className='loading-prompt'>Loading Articles...</div>);
 
     if(articleList && articleList.length > 0)
     {
         latestArticleList = articleList.map((art) => <LatestArticleItem key={art._id} article={art}></LatestArticleItem>)
     } else if(articleList) {
-        latestArticleList = (<div className='loadingPrompt'>No articles available.</div>);
+        latestArticleList = (<div className='loading-prompt'>No articles available.</div>);
     }
 
     let featuredArticleImage = newspaperImage;
@@ -89,38 +89,38 @@ function Index()
     }
 
     return <>
-        <section className='mainArticle'>
-            <div className='mainArticleContent'>
-                <div className='mainArticleTitle'>Tech keeps evolving. Be up to date</div>
-                <div className='mainArticleDescription'>In this blog you can discover the latest news on everything that&apos;s happening in the tech industry, with just a few clicks</div>
-                <div className='mainArticleButton'>
+        <section className='main-article'>
+            <div className='main-article-content'>
+                <div className='main-article-title'>Tech keeps evolving. Be up to date</div>
+                <div className='main-article-description'>In this blog you can discover the latest news on everything that&apos;s happening in the tech industry, with just a few clicks</div>
+                <div className='main-article-button'>
                     <Link to='/articles'>
                         <button type='button'>Start Reading</button>
                     </Link>
                 </div>
             </div>
-            <div className='mainArticleImage'>
+            <div className='main-article-image'>
                 <img src={newspaperImage} />
             </div>
         </section>
-        <section className='latestArticles'>
-            <div className='latestArticlesTitle'>Latest articles</div>
-            <div className='latestArticlesHolder'>
+        <section className='latest-articles'>
+            <div className='latest-articles-title'>Latest articles</div>
+            <div className='latest-articles-holder'>
                 {latestArticleList}
             </div>
         </section>
-        <section className='featuredArticle'>
-            <div className='featuredArticleImage'>
+        <section className='featured-article'>
+            <div className='featured-article-image'>
                 <img src={featuredArticleImage} />
             </div>
-            <div className='featuredArticleContent'>
-                <div className='featuredArticleInformation'>
-                    <div className='featuredArticleCategory'>{(featuredArticle) ? featuredArticle.category.name : 'Unknown category'}</div>
-                    <div className='featuredArticleTime'>{featuredArticleMinuteRead} min read</div>
+            <div className='featured-article-content'>
+                <div className='featured-article-information'>
+                    <div className='featured-article-category'>{(featuredArticle) ? featuredArticle.category.name : 'Unknown category'}</div>
+                    <div className='featured-article-time'>{featuredArticleMinuteRead} min read</div>
                 </div>
-                <div className='featuredArticleTitle'>{(featuredArticle) ? featuredArticle.title : 'Unknown title'}</div>
-                <div className='featuredArticleDescription'>{(featuredArticle) ? featuredArticle.description : 'Unknown description'}</div>
-                <div className='featuredArticleButton'>
+                <div className='featured-article-title'>{(featuredArticle) ? featuredArticle.title : 'Unknown title'}</div>
+                <div className='featured-article-description'>{(featuredArticle) ? featuredArticle.description : 'Unknown description'}</div>
+                <div className='featured-article-button'>
                     <Link to={featuredArticleLink}>
                         <button type='button'>Read Article</button>
                     </Link>
@@ -128,12 +128,12 @@ function Index()
             </div>
         </section>
         <PopularArticles></PopularArticles>
-        <section className='newsLetter'>
-            <div className='newsLetterContent'>
-                <div className='newsLetterTitle'>Subscribe to our newsletter</div>
-                <div className='newsLetterDescription'>Get the latest tech insights in your e-mail.</div>
+        <section className='newsletter'>
+            <div className='newsletter-content'>
+                <div className='newsletter-title'>Subscribe to our newsletter</div>
+                <div className='newsletter-description'>Get the latest tech insights in your e-mail.</div>
             </div>
-            <div className='newsLetterInput'>
+            <div className='newsletter-input'>
                 <input type='text' placeholder='Enter your email' />
                 <button type='button'>Subscribe</button>
             </div>

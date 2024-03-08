@@ -17,17 +17,17 @@ function LatestArticleItem({article})
     let articleUrl = '/article/' + article._id;
 
     return <>
-        <div className='latestArticleItem'>
-            <div className='latestArticleImage'>
+        <div className='latest-article-item'>
+            <div className='latest-article-image'>
                 <img src={imageUrl} />
             </div>
-            <div className='latestArticleContent'>
-                <div className='latestArticleInformation'>
-                    <div className='latestArticleCategory'>{article.category.name}</div>
-                    <div className='latestArticleTime'>{minuteRead} min read</div>
+            <div className='latest-article-content'>
+                <div className='latest-article-information'>
+                    <div className='latest-article-category'>{article.category.name}</div>
+                    <div className='latest-article-time'>{minuteRead} min read</div>
                 </div>
-                <div className='latestArticleTitle'><Link to={articleUrl}>{article.title}</Link></div>
-                <div className='latestArticleDescription'>{article.description}</div>
+                <div className='latest-article-title'><Link to={articleUrl}>{article.title}</Link></div>
+                <div className='latest-article-description'>{article.description}</div>
             </div>
         </div>
     </>;

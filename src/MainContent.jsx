@@ -103,65 +103,68 @@ function MainContent() {
     }, [userObject])
 
     let loginBar = (<>
-        <div className='navigationItem'><NavLink to='/sign-in'>Login</NavLink></div>
-        <div className='navigationItem navigationStarted'><NavLink to='/sign-up'>Get Started</NavLink></div>
+        <div className='navigation-item'><NavLink to='/sign-in'>Login</NavLink></div>
+        <div className='navigation-item navigation-started'><NavLink to='/sign-up'>Get Started</NavLink></div>
     </>);
+
+    let commentsLink = '/';
 
     if(userObject)
     {
+        commentsLink = '/comments/' + userObject._id;
         loginBar = (<>
-            <div className='navigationItem navigationStarted' ref={userMenu}>{userObject.username}</div>
+            <div className='navigation-item navigation-started' ref={userMenu}>{userObject.username}</div>
         </>)
     }
 
     return <>
     <nav ref={addContent} className='navigation'>
-        <div className='navigationLogo'>Blog<span>API</span></div>
-        <div className='navigationBar'>
-            <div className='navigationItem'><NavLink to='/'>Home</NavLink></div>
-            <div className='navigationItem'><NavLink to='/articles'>All Articles</NavLink></div>
-            <div className='navigationItem'><NavLink to='/about'>About</NavLink></div>
+        <div className='navigation-logo'>Blog<span>API</span></div>
+        <div className='navigation-bar'>
+            <div className='navigation-item'><NavLink to='/'>Home</NavLink></div>
+            <div className='navigation-item'><NavLink to='/articles'>All Articles</NavLink></div>
+            <div className='navigation-item'><NavLink to='/about'>About</NavLink></div>
             {loginBar}
 
-            <div className='navigationBarMenu' ref={navMenu}>
-                <div className='navigationBarMenuContainer'>
-                    <div className='navigationBarMenuItem'><NavLink to='/my-comments'>My comments</NavLink></div>
-                    <div className='navigationBarMenuItem'><NavLink to='/logout'>Logout</NavLink></div>
+            <div className='navigation-bar-menu' ref={navMenu}>
+                <div className='navigation-bar-menu-container'>
+                    <div className='navigation-bar-menu-item'><NavLink to={commentsLink}>My comments</NavLink></div>
+                    <div className='navigation-bar-menu-item'><NavLink to='/logout'>Logout</NavLink></div>
                 </div>
             </div>
         </div>
     </nav>
-    <main ref={addContent} className='contentHolder'>
-        <Outlet />
+    <main ref={addContent} className='content-holder'>
+        <Outlet context={[userObject, setUserObject]} />
     </main>
     <footer ref={addContent} className='footer'>
-        <div className='footerContent'>
-            <div className='footerLogo'>
+        <div className='footer-content'>
+            <div className='footer-logo'>
                 Blog<span>API</span>
             </div>
-            <div className='footerLinks'>
-                <div className='linkColumn'>
+            <div className='footer-links'>
+                <div className='link-column'>
                     <p className='title'>INFORMATION</p>
                     <p>Contact Us</p>
                     <p>About Us</p>
                     <p>Our Team</p>
                     <p>Blog</p>
                 </div>
-                <div className='linkColumn'>
+                <div className='link-column'>
                     <p className='title'>CUSTOMER SERVICE</p>
                     <p>Terms & Conditions</p>
                     <p>Delivery</p>
                     <p>Privacy Policy</p>
                     <p>Support Site</p>
                 </div>
-                <div className='linkColumn'>
+                <div className='link-column'>
                     <p className='title'>FOLLOW US</p>
                     <p>Facebook</p>
                     <p>Instagram</p>
                     <p>X</p>
                 </div>
             </div>
-            <div className='footerEnd'>
+            <div className='footer-end'>
                 <a href='https://github.com/JulianKings/odin-blog-api-frontend'><img src={gitIcon} alt='GitHub Icon' /></a>
                 <p>© 2024 Site developed as part of one of the final lessons for The Odin Project</p>
             </div>

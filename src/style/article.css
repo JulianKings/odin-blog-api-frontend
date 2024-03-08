@@ -1,7 +1,7 @@
 .article-content-holder {
     width: 100%;
-    min-width: 45ch;
-    max-width: 80ch;
+    min-width: 40ch;
+    max-width: 100ch;
     display: flex;
     flex-direction: column;
 }
@@ -44,7 +44,19 @@
     display: inline-block;
     margin: 0 0.4rem;
     margin-top: 0.2rem;
-  }
+}
+
+.article-author {
+    align-self: center;
+    color: rgb(134, 134, 134);
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+}
+
+.article-author span {
+    font-weight: bold;
+    color: black;
+}
 
 .article-image img {
     width: 100%;
@@ -52,4 +64,72 @@
     object-fit: cover;
     height: 22rem;
     margin: 1.6rem 0;
+}
+
+.article-message {
+    white-space: pre-line;
+}
+
+.article-comment-form {
+    background-color: white;
+    border-radius: 0.5rem;    
+    box-shadow: 0 0 0.4rem rgb(0, 0, 0, 0.1);
+    flex: 1 1 auto;
+    padding: 0.5rem 1.2rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 15%;
+    grid-template-rows: 1fr;
+    font-size: 1rem;
+}
+
+.article-comment-form .article-comment-form-button,
+.article-comment-form .article-comment-form-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-comment-form .article-comment-form-input textarea {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    border-radius: 0.2rem;
+    width: 95%;
+    resize: vertical;
+    margin-right: 2rem;
+}
+
+.article-comment-form .article-comment-form-input textarea:focus {
+    border: 1px solid #0c4981;
+    outline: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.article-comment-form .article-comment-form-button button {
+    background-color: #336199;
+    color: white;
+    border: 0;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.8rem;
+    box-shadow: 0 0.25rem 0 #27374D;
+    transition: all 0.2s ease-in;
+}
+
+.article-comment-form .article-comment-form-button button:hover {
+    background-color: #27374D;
+    box-shadow: 0 0.25rem 0 #0d1725;
+}
+
+.article-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+}
+
+.article-comments .article-comments-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
 }

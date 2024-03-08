@@ -17,18 +17,18 @@ function ArticleItem({article}) {
     let articleUrl = '/article/' + article._id;
 
     return <>
-        <section className='articleItem'>
-            <div className='articleItemImage'>
+        <section className='article-item'>
+            <div className='article-item-image'>
                 <img src={imageUrl} />
             </div>
-            <div className='articleItemContent'>
-                <div className='articleItemInformation'>
-                    <div className='articleItemCategory'>{article.category.name}</div>
-                    <div className='articleItemTime'>{minuteRead} min read</div>
+            <div className='article-item-content'>
+                <div className='article-item-information'>
+                    <div className='article-item-category'>{article.category.name}</div>
+                    <div className='article-item-time'>{minuteRead} min read</div>
                 </div>
-                <div className='articleItemTitle'>{article.title}</div>
-                <div className='articleItemDescription'>{article.description}</div>
-                <div className='articleItemButton'>
+                <div className='article-item-title'>{article.title}</div>
+                <div className='article-item-description'>{article.description}</div>
+                <div className='article-item-button'>
                     <Link to={articleUrl}>
                         <button type='button'>Read Article</button>
                     </Link>

@@ -1,44 +1,44 @@
-.latestArticleItem {
+.latest-article-item {
     background-color: white;
     padding: 0.4rem;
     border-radius: 0.5rem;    
     box-shadow: 0 0 0.6rem rgb(0, 0, 0, 0.15);
 }
 
-.latestArticleItem .latestArticleImage img {
+.latest-article-item .latest-article-image img {
     width: 100%;
     height: 10rem;
     border-radius: 0.35rem;
     object-fit: cover;
 }
 
-.latestArticleItem .latestArticleContent {
+.latest-article-item .latest-article-content {
     margin-top: 0.4rem;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
 }
 
-.latestArticleContent .latestArticleInformation {
+.latest-article-content .latest-article-information {
     font-size: 0.85rem;
     display: flex;
     gap: 0.8rem;
 }
 
-.latestArticleInformation .latestArticleCategory {
+.latest-article-information .latest-article-category {
     font-weight: bold;
 }
 
-.latestArticleContent .latestArticleTitle {
+.latest-article-content .latest-article-title {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.latestArticleContent .latestArticleDescription {
+.latest-article-content .latest-article-description {
     font-size: 0.8rem;
     color: #747474;
 }
 
-.latestArticleInformation .latestArticleTime {
+.latest-article-information .latest-article-time {
     color: #336199;
 }

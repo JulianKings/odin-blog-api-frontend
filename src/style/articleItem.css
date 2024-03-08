@@ -1,4 +1,4 @@
-.articleItem {
+.article-item {
     background-color: white;
     padding: 0.4rem;
     border-radius: 0.5rem;    
@@ -10,14 +10,14 @@
     margin-top: 2rem;
 }
 
-.articleItem .articleItemImage img {
+.article-item .article-item-image img {
     width: 38ch;
     height: 16rem;
     border-radius: 0.35rem;
     object-fit: cover;
 }
 
-.articleItem .articleItemContent {
+.article-item .article-item-content {
     justify-self: flex-end;
     display: flex;
     flex-direction: column;
@@ -25,24 +25,24 @@
     max-width: 35ch;
 }
 
-.articleItem .articleItemInformation {
+.article-item .article-item-information {
     font-size: 0.9rem;
     font-weight: bold;
     display: flex;
     justify-content: space-evenly;
 }
 
-.articleItemContent .articleItemTitle {
+.article-item-content .article-item-title {
     font-size: 1.6rem;
     font-weight: bold;
 }
 
-.articleItemContent .articleItemDescription {
+.article-item-content .article-item-description {
     font-size: 0.9rem;
     color: #747474;
 }
 
-.articleItemContent .articleItemButton button {
+.article-item-content .article-item-button button {
     background-color: #336199;
     color: white;
     border: 0;
@@ -52,7 +52,7 @@
     transition: all 0.2s ease-in;
 }
 
-.articleItemContent .articleItemButton button:hover {
+.article-item-content .article-item-button button:hover {
     background-color: #27374D;
     box-shadow: 0 0.25rem 0 #0d1725;
 }

@@ -8,6 +8,7 @@ import Logout from "./components/logout";
 import About from "./components/about";
 import Articles from "./components/articles";
 import Article from "./components/article";
+import Comments from "./components/comments";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const Router = () => {
                   {
                     path: "article/:id",
                     element: <Article />
+                  }, 
+                  {
+                    path: "comments/:id",
+                    element: <Comments />
                   }
               ],
           }
