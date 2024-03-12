@@ -129,6 +129,7 @@ function MainContent() {
             <div className='navigation-bar-menu' ref={navMenu}>
                 <div className='navigation-bar-menu-container'>
                     <div className='navigation-bar-menu-item'><NavLink to={commentsLink}>My comments</NavLink></div>
+                    <div className='navigation-bar-menu-item'><NavLink to='/saved_articles'>Saved articles</NavLink></div>
                     <div className='navigation-bar-menu-item'><NavLink to='/logout'>Logout</NavLink></div>
                 </div>
             </div>

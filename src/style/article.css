@@ -87,11 +87,19 @@
     margin-top: 0.2rem;
 }
 
-.article-like-scale img {
+.article-save {
+    margin: 0.8rem 0;
+    margin-left: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.article-scale img {
     transition: transform 0.5s ease-in-out;
 }
 
-.article-like-scale img:hover {
+.article-scale img:hover {
     transform: scale(1.4);
 }
 

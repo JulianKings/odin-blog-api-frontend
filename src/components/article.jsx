@@ -6,6 +6,8 @@ import { Link, useNavigate, useOutletContext, useParams } from 'react-router-dom
 import CommentItem from './items/commentItem';
 import heartIcon from '../assets/heart.svg';
 import filledHeartIcon from '../assets/heart_filled.svg';
+import starIcon from '../assets/star.svg';
+import filledStarIcon from '../assets/filled_star.svg';
 
 function Article()
 {
@@ -13,9 +15,11 @@ function Article()
     const [article, setArticle] = useState(null);
     const [commentList, setCommentList] = useState(null);
     const [articleLike, setArticleLike] = useState(null);
+    const [articleSaved, setArticleSaved] = useState(null);
     const [userObject] = useOutletContext();
     const commentInput = useRef(null);
     const articleLikeBox = useRef(null);
+    const articleSaveBox = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -52,6 +56,7 @@ function Article()
         if(userObject && article && localStorage.getItem('sso_token'))
         {
             const ssoToken = localStorage.getItem('sso_token');
+            
             fetch("http://localhost:3000/sso/check_like/" + article._id, {                
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,6 +81,29 @@ function Article()
                 throw new Error(error);
             })
 
+            fetch("http://localhost:3000/sso/check_saved_article/" + article._id, {                
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'bearer ' + ssoToken
+                },
+                mode: "cors",
+                dataType: 'json'
+            })
+            .then((response) => {
+            if (response.status >= 400) {
+                throw new Error("server error");
+            }
+            return response.json();
+            })
+            .then((response) => {
+                if(response && response.responseStatus === 'articleSavedFound')
+                {
+                    setArticleSaved(true);
+                }
+            })
+            .catch((error) => {
+                throw new Error(error);
+            })
         }
     }, [article]);
 
@@ -89,6 +117,7 @@ function Article()
         let luxonDatetime = DateTime.fromISO(articleTime);
 
         let likeContent = '';
+        let savedContent = '';
 
         let commentContent = 'There are no comments right now.';
 
@@ -103,9 +132,16 @@ function Article()
         {
             if(!articleLike)
             {
-                likeContent = <div ref={articleLikeBox} onClick={likeArticle} className='article-like article-like-scale'><img src={heartIcon} alt='Like button' /> <span>{article.likes} likes</span></div>;
+                likeContent = <div ref={articleLikeBox} onClick={likeArticle} className='article-like article-scale'><img src={heartIcon} alt='Like button' /> <span>{article.likes} likes</span></div>;
             } else {
                 likeContent = <div ref={articleLikeBox} className='article-like'><img src={filledHeartIcon} alt='Like button' /> <span>{article.likes} likes</span></div>;
+            }
+
+            if(!articleSaved)
+            {
+                savedContent = <div ref={articleSaveBox} onClick={saveArticle} className='article-save article-scale'><img src={starIcon} alt='Save button' /></div>;
+            } else {
+                savedContent = <div ref={articleSaveBox} onClick={saveArticle} className='article-save article-scale'><img src={filledStarIcon} alt='Save button' /></div>;
             }
             
             commentForm = (<form method='post' onSubmit={submitComment}>
@@ -138,7 +174,7 @@ function Article()
             <div className='article-author'>Written by <span>{article.author.first_name} {article.author.last_name}</span></div>
             <div className='article-image'><img src={imageUrl} /></div>
             <div className='article-message'>{article.message}</div>
-            <div className='article-extra'>{likeContent}</div>
+            <div className='article-extra'>{likeContent} {savedContent}</div>
             <div className='article-comments'>
                 <div className='article-comments-title'>Comments ({commentList.length})</div>
                 {commentForm}
@@ -156,9 +192,9 @@ function Article()
         if(articleLikeBox.current && userObject && article && localStorage.getItem('sso_token'))
         {
             articleLikeBox.current.innerHTML = "<img src=" + filledHeartIcon + " alt='Like button' /> <span>" + (article.likes + 1) + " likes</span>"
-            if(articleLikeBox.current.classList.contains('article-like-scale'))
+            if(articleLikeBox.current.classList.contains('article-scale'))
             {
-                articleLikeBox.current.classList.remove('article-like-scale');
+                articleLikeBox.current.classList.remove('article-scale');
             }
             const ssoToken = localStorage.getItem('sso_token');
             fetch("http://localhost:3000/sso/do_like/" + article._id, {                
@@ -171,6 +207,13 @@ function Article()
             })
             .then((response) => {
             if (response.status >= 400) {
+                // rectify UI
+                articleLikeBox.current.innerHTML = "<img src=" + heartIcon + " alt='Like button' /> <span>" + (article.likes) + " likes</span>"
+                if(!articleLikeBox.current.classList.contains('article-scale'))
+                {
+                    articleLikeBox.current.classList.add('article-scale');
+                }
+
                 throw new Error("server error");
             }
             return response.json();
@@ -179,16 +222,105 @@ function Article()
                 if(response && response.responseStatus === 'articleLiked')
                 {
                     // TODO maybe add like completion animation?
+                    setArticleLike(true);
+                    const newLikeCount = (article.likes) + 1;
+                    const updatedArticle = {
+                        ...article,
+                        likes: newLikeCount
+                    }
+                    setArticle(updatedArticle);
                 } else {
                     // rectify UI
                     articleLikeBox.current.innerHTML = "<img src=" + heartIcon + " alt='Like button' /> <span>" + (article.likes) + " likes</span>"
-                    if(!articleLikeBox.current.classList.contains('article-like-scale'))
+                    if(!articleLikeBox.current.classList.contains('article-scale'))
                     {
-                        articleLikeBox.current.classList.add('article-like-scale');
+                        articleLikeBox.current.classList.add('article-scale');
                     }
                 }
             })
             .catch((error) => {
+                // rectify UI
+                articleLikeBox.current.innerHTML = "<img src=" + heartIcon + " alt='Like button' /> <span>" + (article.likes) + " likes</span>"
+                if(!articleLikeBox.current.classList.contains('article-scale'))
+                {
+                    articleLikeBox.current.classList.add('article-scale');
+                }
+
+                throw new Error(error);
+            })
+        }
+    }
+
+    function saveArticle()
+    {
+        if(articleSaveBox.current && userObject && article && localStorage.getItem('sso_token'))
+        {
+            if(articleSaved)
+            {
+                articleSaveBox.current.innerHTML = "<img src=" + starIcon + " alt='Save button' />"
+            } else {
+                articleSaveBox.current.innerHTML = "<img src=" + filledStarIcon + " alt='Save button' />"
+            }
+
+            const ssoToken = localStorage.getItem('sso_token');
+            fetch("http://localhost:3000/sso/do_save_article/" + article._id, {                
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'bearer ' + ssoToken
+                },
+                mode: "cors",
+                dataType: 'json'
+            })
+            .then((response) => {
+            if (response.status >= 400) {
+                // rectify UI
+                if(!articleSaved)
+                {
+                    articleSaveBox.current.innerHTML = "<img src=" + starIcon + " alt='Save button' />"
+                } else {
+                    articleSaveBox.current.innerHTML = "<img src=" + filledStarIcon + " alt='Save button' />"
+                }
+
+                throw new Error("server error");
+            }
+            return response.json();
+            })
+            .then((response) => {
+                if(response && response.responseStatus === 'articleSaved')
+                {
+                    // TODO maybe add like completion animation?
+                    setArticleSaved(true);
+                } else if(response && response.responseStatus === 'articleRemovedSave')
+                {
+                    // TODO maybe add like completion animation?
+                    setArticleSaved(false);
+                } else {
+                    // rectify UI                    
+                    if(!articleSaved)
+                    {
+                        articleSaveBox.current.innerHTML = "<img src=" + starIcon + " alt='Save button' />"
+                    } else {
+                        articleSaveBox.current.innerHTML = "<img src=" + filledStarIcon + " alt='Save button' />"
+                    }
+                }
+            })
+            .catch((error) => {
+                // rectify UI
+                if(!articleSaved)
+                {
+                    articleSaveBox.current.innerHTML = "<img src=" + starIcon + " alt='Save button' />"
+                    if(!articleSaveBox.current.classList.contains('article-scale'))
+                    {
+                        articleSaveBox.current.classList.add('article-scale');
+                    }
+                } else {
+                    articleSaveBox.current.innerHTML = "<img src=" + filledStarIcon + " alt='Save button' />"
+                    if(articleSaveBox.current.classList.contains('article-scale'))
+                    {
+                        articleSaveBox.current.classList.remove('article-scale');
+                    }
+                }
+
                 throw new Error(error);
             })
         }

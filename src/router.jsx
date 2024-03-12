@@ -9,6 +9,7 @@ import About from "./components/about";
 import Articles from "./components/articles";
 import Article from "./components/article";
 import Comments from "./components/comments";
+import SavedArticles from "./components/savedArticle";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -48,7 +49,11 @@ const Router = () => {
                   {
                     path: "comments/:id",
                     element: <Comments />
-                  }
+                  },
+                  {
+                    path: "saved_articles",
+                    element: <SavedArticles />
+                  }, 
               ],
           }
         ],
