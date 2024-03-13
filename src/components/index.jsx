@@ -1,14 +1,16 @@
 import '../style/index.css'
 import newspaperImage from '../assets/newspaper.webp'
 import LatestArticleItem from './items/latestArticleItem';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PopularArticles from './popularArticles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Index()
 {
     const [articleList, setArticleList] = useState(null);
     const [featuredArticle, setFeaturedArticle] = useState(null);
+    const mailInput = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Get latest articles
@@ -133,12 +135,51 @@ function Index()
                 <div className='newsletter-title'>Subscribe to our newsletter</div>
                 <div className='newsletter-description'>Get the latest tech insights in your e-mail.</div>
             </div>
+            <form method="post" onSubmit={sendSubscription}>
             <div className='newsletter-input'>
-                <input type='text' placeholder='Enter your email' />
-                <button type='button'>Subscribe</button>
+                <input ref={mailInput} type='text' id='email-holder' name='email' placeholder='Enter your email' />
+                <button type='submit'>Subscribe</button>
             </div>
+            </form>
         </section>
     </>
+
+    function sendSubscription(event)
+    {
+        event.preventDefault();
+        if(mailInput.current)
+        {
+            const requestBody = {
+                email: mailInput.current.value
+            }
+            // ask the backEnd
+            fetch("http://localhost:3000/subscribe", { 
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                mode: "cors",
+                dataType: 'json',
+                body: JSON.stringify(requestBody),
+            })
+            .then((response) => {
+            if (response.status >= 400) {
+                throw new Error("server error");
+            }
+            return response.json();
+            })
+            .then((response) => {
+                if(response.responseStatus)
+                {
+                    if(response.responseStatus === 'validSubscription')
+                    {
+                        navigate(0);
+                    }
+                }            
+            })
+            .catch((error) => {
+                throw new Error(error);
+            });
+        }
+    }
 }
 
 export default Index;

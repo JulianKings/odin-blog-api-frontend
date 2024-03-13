@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainContent from "./MainContent";
+import MainContent from "./mainContent";
 import ErrorPage from "./components/errorPage";
 import Index from "./components";
 import SignUp from "./components/signUp";
