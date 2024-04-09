@@ -18,7 +18,7 @@ function SavedArticles() {
         {
             const ssoToken = localStorage.getItem('sso_token');
             
-            fetch("http://localhost:3000/sso/get_saved_articles", {                
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sso/get_saved_articles", {                
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + ssoToken

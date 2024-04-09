@@ -12,7 +12,7 @@ function Comments()
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:3000/comment/" + id, {                
+        fetch("https://odin-blog-app-904858222abf.herokuapp.com/comment/" + id, {                
             headers: {
                 'Content-Type': 'application/json'
             },

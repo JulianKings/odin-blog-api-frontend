@@ -26,7 +26,7 @@ function Article()
 
     useEffect(() => {
         // Get popular articles
-        fetch("http://localhost:3000/article/" + id, {                
+        fetch("https://odin-blog-app-904858222abf.herokuapp.com/article/" + id, {                
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -59,7 +59,7 @@ function Article()
         {
             const ssoToken = localStorage.getItem('sso_token');
             
-            fetch("http://localhost:3000/sso/check_like/" + article._id, {                
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sso/check_like/" + article._id, {                
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'bearer ' + ssoToken
@@ -83,7 +83,7 @@ function Article()
                 throw new Error(error);
             })
 
-            fetch("http://localhost:3000/sso/check_saved_article/" + article._id, {                
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sso/check_saved_article/" + article._id, {                
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'bearer ' + ssoToken
@@ -202,7 +202,7 @@ function Article()
                 articleLikeBox.current.classList.remove('article-scale');
             }
             const ssoToken = localStorage.getItem('sso_token');
-            fetch("http://localhost:3000/sso/do_like/" + article._id, {                
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sso/do_like/" + article._id, {                
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'bearer ' + ssoToken
@@ -268,7 +268,7 @@ function Article()
             }
 
             const ssoToken = localStorage.getItem('sso_token');
-            fetch("http://localhost:3000/sso/do_save_article/" + article._id, {                
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sso/do_save_article/" + article._id, {                
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'bearer ' + ssoToken
@@ -342,7 +342,7 @@ function Article()
         {
             // ask the backEnd
             const ssoToken = localStorage.getItem('sso_token');
-            fetch("http://localhost:3000/sso/comment", { 
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sso/comment", { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

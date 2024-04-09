@@ -187,7 +187,7 @@ function SignUp()
         if(!errorNoticed)
         {
             // ask the backEnd
-            fetch("http://localhost:3000/sign-up", { 
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/sign-up", { 
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 mode: "cors",

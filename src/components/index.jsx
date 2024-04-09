@@ -14,7 +14,7 @@ function Index()
 
     useEffect(() => {
         // Get latest articles
-        fetch("http://localhost:3000/article", {                
+        fetch("https://odin-blog-app-904858222abf.herokuapp.com/article", {                
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -38,7 +38,7 @@ function Index()
         })
 
         // Get featured article
-        fetch("http://localhost:3000/settings", {                
+        fetch("https://odin-blog-app-904858222abf.herokuapp.com/settings", {                
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -153,7 +153,7 @@ function Index()
                 email: mailInput.current.value
             }
             // ask the backEnd
-            fetch("http://localhost:3000/subscribe", { 
+            fetch("https://odin-blog-app-904858222abf.herokuapp.com/subscribe", { 
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 mode: "cors",

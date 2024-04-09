@@ -9,7 +9,7 @@ function PopularArticles()
 
     useEffect(() => {
         // Get popular articles
-        fetch("http://localhost:3000/article/popular", {                
+        fetch("https://odin-blog-app-904858222abf.herokuapp.com/article/popular", {                
             headers: {
                 'Content-Type': 'application/json'
             },

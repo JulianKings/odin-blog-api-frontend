@@ -6,7 +6,7 @@ function Articles() {
     const [articleList, setArticleList] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3000/article/all", {                
+        fetch("https://odin-blog-app-904858222abf.herokuapp.com/article/all", {                
             headers: {
                 'Content-Type': 'application/json'
             },
