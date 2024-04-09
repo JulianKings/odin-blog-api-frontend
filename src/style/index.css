@@ -262,12 +262,12 @@
 
 .newsletter .newsletter-input button {
     position: absolute;
-    right: 2.5rem;
-    top: 0.12rem;
+    right: 2.55rem;
+    top: 0.14rem;
     background-color: #011e42;
     border-radius: 0.4rem;
     border: 0;
-    padding: 0.34rem 0.6rem;
+    padding: 0.32rem 0.6rem;
     transition: all 0.3s ease-in;
     color: white;
 }
