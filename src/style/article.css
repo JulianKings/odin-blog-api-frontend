@@ -1,5 +1,5 @@
-.article-content-holder {
-    width: 100%;
+.single-article-content-holder {
+    width: 90vw;
     min-width: 40ch;
     max-width: 100ch;
     display: flex;
@@ -26,6 +26,7 @@
     max-width: 30ch;
     text-align: center;
     margin: 0.4rem 0;
+    margin-top: 0.8rem;
 }
 
 .article-timestamp {

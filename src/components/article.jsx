@@ -8,6 +8,8 @@ import heartIcon from '../assets/heart.svg';
 import filledHeartIcon from '../assets/heart_filled.svg';
 import starIcon from '../assets/star.svg';
 import filledStarIcon from '../assets/filled_star.svg';
+import DOMPurify from 'dompurify';
+import parser from 'html-react-parser';
 
 function Article()
 {
@@ -123,7 +125,7 @@ function Article()
 
         if(commentList.length > 0)
         {
-            commentContent = commentList.map((com) => <CommentItem key={com._id} comment={com}></CommentItem>)
+            commentContent = commentList.map((com) => <CommentItem key={com._id} comment={com} userInstance={userObject}></CommentItem>)
         }
 
         let commentForm = '';
@@ -157,7 +159,10 @@ function Article()
             </form>);
         }
 
-        articleContent = (<div className='article-content-holder'>
+        const cleanContent = (new DOMParser().parseFromString(article.message, "text/html")).documentElement.textContent;
+        const sanitizeContent = DOMPurify.sanitize(cleanContent);
+
+        articleContent = (<div className='single-article-content-holder'>
             <div className='article-back'>
             <Link
                 to="page"
@@ -173,7 +178,7 @@ function Article()
             <div className='article-timestamp'>{luxonDatetime.toFormat('yyyy LLL dd')}<span className='dot'></span>{luxonDatetime.toFormat("hh':'mm a")}</div>
             <div className='article-author'>Written by <span>{article.author.first_name} {article.author.last_name}</span></div>
             <div className='article-image'><img src={imageUrl} /></div>
-            <div className='article-message'>{article.message}</div>
+            <div className='article-message'>{parser(sanitizeContent)}</div>
             <div className='article-extra'>{likeContent} {savedContent}</div>
             <div className='article-comments'>
                 <div className='article-comments-title'>Comments ({commentList.length})</div>

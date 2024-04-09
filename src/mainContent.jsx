@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import './content.css';
 import gitIcon from './assets/github.svg'
 import { useEffect, useRef, useState } from 'react';
@@ -10,6 +10,7 @@ function MainContent() {
     const [content, addContent] = useMultiRefs();
     const navMenu = useRef(null);
     const userMenu = useRef(null);
+    const location = useLocation();
 
     useEffect(() => {
         const contentElements = content();
@@ -26,7 +27,9 @@ function MainContent() {
                 element.setAttribute('data-click-event', 'true');
             }
         })
+    }, []);
 
+    useEffect(() => {
         if(localStorage.getItem('sso_token'))
         {
             const ssoToken = localStorage.getItem('sso_token');
@@ -69,7 +72,7 @@ function MainContent() {
                 throw new Error(error);
             })
         }
-    }, []);
+    }, [location.pathname]);
 
     useEffect(() => {
         if(userObject)
@@ -117,6 +120,14 @@ function MainContent() {
         </>)
     }
 
+    let adminLink = '';
+
+    if(userObject && (userObject.role === 'administrator' || userObject.role === 'author'))
+    {
+        adminLink = 
+        <div className='navigation-bar-menu-item'><a href='http://localhost:5174/'>Housekeeping</a></div>;
+    }
+
     return <>
     <nav ref={addContent} className='navigation'>
         <div className='navigation-logo'>Blog<span>API</span></div>
@@ -130,6 +141,7 @@ function MainContent() {
                 <div className='navigation-bar-menu-container'>
                     <div className='navigation-bar-menu-item'><NavLink to={commentsLink}>My comments</NavLink></div>
                     <div className='navigation-bar-menu-item'><NavLink to='/saved_articles'>Saved articles</NavLink></div>
+                    {adminLink}
                     <div className='navigation-bar-menu-item'><NavLink to='/logout'>Logout</NavLink></div>
                 </div>
             </div>

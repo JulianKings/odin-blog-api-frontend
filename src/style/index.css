@@ -87,8 +87,10 @@
 }
 
 .featured-article .featured-article-content {
-    justify-self: flex-end;
+    justify-self: flex-start;
+    margin-left: 1.2rem;
     display: flex;
+    width: 95%;
     flex-direction: column;
     gap: 1.4rem;
     max-width: 35ch;
