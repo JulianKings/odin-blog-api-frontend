@@ -125,7 +125,7 @@ function MainContent() {
     if(userObject && (userObject.role === 'administrator' || userObject.role === 'author'))
     {
         adminLink = 
-        <div className='navigation-bar-menu-item'><a href='http://localhost:5174/'>Housekeeping</a></div>;
+        <div className='navigation-bar-menu-item'><a href='https://odin-blog-housekeeping.netlify.app/'>Housekeeping</a></div>;
     }
 
     return <>
